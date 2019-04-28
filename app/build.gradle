@@ -32,13 +32,15 @@ android {
         dev {
             dimension "version"
             versionNameSuffix "-dev"
-            buildConfigField "String", "URL", "\"http://\""
+            buildConfigField "String", "URL", "\"http://api.openweathermap.org\""
+            buildConfigField "String", "APPID", "\"7ebe9ebe395fca442f6a995426b490f2\""
             resValue "string", "app_name", "Weather - dev"
         }
 
         prod {
             dimension "version"
-            buildConfigField "String", "URL", "\"http://\""
+            buildConfigField "String", "URL", "\"http://api.openweathermap.org\""
+            buildConfigField "String", "APPID", "\"7ebe9ebe395fca442f6a995426b490f2\""
             resValue "string", "app_name", "Weather"
         }
     }
