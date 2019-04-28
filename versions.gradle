@@ -3,8 +3,11 @@ ext {
     ktlint_version = '0.32.0'
     dagger_version = '2.22.1'
     navigation_version = '1.0.0'
+
     rx_java_version = '2.2.2'
     rx_kotlin_version = '2.3.0'
     rx_android_version = '2.1.0'
     rx_binding_version = '3.0.0-alpha2'
+
+    mockito_version = '2.23.4'
 }
