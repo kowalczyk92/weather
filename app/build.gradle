@@ -40,4 +40,10 @@ android {
             resValue "string", "app_name", "Weather"
         }
     }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }

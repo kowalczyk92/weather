@@ -10,4 +10,5 @@ ext {
     rx_binding_version = '3.0.0-alpha2'
 
     mockito_version = '2.23.4'
+    robolectric_version = '4.2'
 }
