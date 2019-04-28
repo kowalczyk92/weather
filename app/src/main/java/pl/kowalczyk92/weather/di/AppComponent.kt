@@ -7,6 +7,7 @@ import pl.kowalczyk92.weather.WeatherApp
 import pl.kowalczyk92.weather.di.modules.AppModule
 import pl.kowalczyk92.weather.di.modules.SchedulersModule
 
+@AppScope
 @Component(
     modules = [
         AppModule::class,
