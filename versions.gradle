@@ -3,6 +3,7 @@ ext {
     ktlint_version = '0.32.0'
     dagger_version = '2.22.1'
     navigation_version = '1.0.0'
+    room_version = '2.1.0-alpha07'
 
     rx_java_version = '2.2.2'
     rx_kotlin_version = '2.3.0'
