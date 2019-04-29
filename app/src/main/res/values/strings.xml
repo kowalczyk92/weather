@@ -2,5 +2,7 @@
     <string name="search_edit_text_hint">Miejscowość</string>
     <string name="search_confirm_button_text">Szukaj</string>
 
+    <string name="search_delete_city_button_text">Usuń</string>
+
     <string name="error_default">Ups, coś poszło nie tak.</string>
 </resources>
