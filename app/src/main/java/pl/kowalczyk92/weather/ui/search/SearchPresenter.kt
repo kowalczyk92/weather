@@ -19,19 +19,26 @@ class SearchPresenter @Inject constructor(
         addSubscription(
             view.searchEvents
                 .doOnNext { view.showLoading() }
-                .flatMapSingle { interactor.searchWeather(it) }
+                .observeOn(schedulersProvider.io())
+                .flatMapSingle { cityName -> interactor.searchWeather(cityName) }
+                .doOnNext { forecast -> interactor.saveSearchedCity(forecast.name) }
                 .observeOn(schedulersProvider.ui())
                 .subscribeBy(
                     onNext = {
-                        routing.startDetailsFragment()
+                        routing.startDetailsFragment(it)
                         view.hideLoading()
                     },
-                    onError = { view.showMessage(R.string.error_default) }
+                    onError = {
+                        view.hideLoading()
+                        view.showMessage(R.string.error_default)
+                        it.printStackTrace()
+                    }
                 )
         )
 
         addSubscription(
             interactor.loadSearchedCities()
+                .subscribeOn(schedulersProvider.io())
                 .observeOn(schedulersProvider.ui())
                 .subscribeBy(
                     onSuccess = {

@@ -9,8 +9,6 @@ data class WeatherForecast(
     val id: Int,
     val main: Main,
     val name: String,
-    val sys: Sys,
     val visibility: Int,
-    val weather: List<Weather>,
     val wind: Wind
 )

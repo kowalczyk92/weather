@@ -10,7 +10,12 @@ import io.reactivex.subjects.PublishSubject
 import org.junit.Before
 import org.junit.Test
 import pl.kowalczyk92.weather.R
+import pl.kowalczyk92.weather.data.database.City
+import pl.kowalczyk92.weather.data.entity.Clouds
+import pl.kowalczyk92.weather.data.entity.Coord
+import pl.kowalczyk92.weather.data.entity.Main
 import pl.kowalczyk92.weather.data.entity.WeatherForecast
+import pl.kowalczyk92.weather.data.entity.Wind
 import pl.kowalczyk92.weather.utils.schedulers.TestSchedulersProvider
 
 class SearchPresenterTest {
@@ -31,10 +36,10 @@ class SearchPresenterTest {
     }
 
     @Test
-    fun `search event invokes weather search for proper city`() {
-        val city = "a"
-        searchEventSubject.onNext(city)
-        verify(interactor).searchWeather(city)
+    fun `search event invokes weather search for proper city name`() {
+        val cityName = "a"
+        searchEventSubject.onNext(cityName)
+        verify(interactor).searchWeather(cityName)
     }
 
     @Test
@@ -45,27 +50,28 @@ class SearchPresenterTest {
 
     @Test
     fun `search event shows loading view before weather search`() {
-        val city = "a"
-        searchEventSubject.onNext(city)
+        val cityName = "a"
+        searchEventSubject.onNext(cityName)
         inOrder(view, interactor) {
             verify(view).showLoading()
-            verify(interactor).searchWeather(city)
+            verify(interactor).searchWeather(cityName)
         }
     }
 
     @Test
     fun `search event hides loading view after weather search`() {
-        val city = "a"
-        searchEventSubject.onNext(city)
+        val cityName = "a"
+        searchEventSubject.onNext(cityName)
         inOrder(view, interactor) {
-            verify(interactor).searchWeather(city)
+            verify(interactor).searchWeather(cityName)
             verify(view).hideLoading()
         }
     }
 
     @Test
     fun `search event runs details fragment when weather search was succeed`() {
-        verify(routing).startDetailsFragment()
+        searchEventSubject.onNext("a")
+        verify(routing).startDetailsFragment(createWeatherForecast())
     }
 
     @Test
@@ -75,7 +81,7 @@ class SearchPresenterTest {
 
     @Test
     fun `attachView shows recently searched cities`() {
-        val cities = listOf("a", "b", "c")
+        val cities = createSearchedCities()
         whenever(interactor.loadSearchedCities()).thenReturn(Single.just(cities))
         verify(view).showSearchedCities(cities)
     }
@@ -87,7 +93,27 @@ class SearchPresenterTest {
         verify(view).showMessage(R.string.error_default)
     }
 
-    private fun createWeatherForecast() = WeatherForecast("Warszawa")
+    private fun createWeatherForecast() = WeatherForecast(
+        base = "a",
+        clouds = Clouds(1),
+        cod = 2,
+        coord = Coord(lat = 1.1, lon = 2.2),
+        dt = 3,
+        id = 4,
+        main = createMain(),
+        name = "city",
+        visibility = 5,
+        wind = Wind(deg = 111, speed = 222.222)
+    )
 
-    private fun createSearchedCities() = listOf("a", "b", "c")
+    private fun createMain() = Main(
+        humidity = 10,
+        pressure = 11,
+        temp = 30.5,
+        temp_max = 31.0,
+        temp_min = 29.0
+    )
+
+    private fun createSearchedCities() =
+        listOf(City(name = "a"), City(name = "b"), City(name = "c"))
 }
