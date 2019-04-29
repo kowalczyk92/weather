@@ -1,5 +1,9 @@
 package pl.kowalczyk92.weather.data.entity
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class WeatherForecast(
     val base: String,
     val clouds: Clouds,
@@ -11,4 +15,4 @@ data class WeatherForecast(
     val name: String,
     val visibility: Int,
     val wind: Wind
-)
+) : Parcelable
