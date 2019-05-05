@@ -6,7 +6,7 @@ import pl.kowalczyk92.weather.ui.base.presenter.BasePresenter
 import pl.kowalczyk92.weather.utils.schedulers.SchedulersProvider
 import javax.inject.Inject
 
-class SearchPresenter @Inject constructor(
+open class SearchPresenter @Inject constructor(
     private val interactor: SearchContract.Interactor,
     private val routing: SearchContract.Routing,
     private val schedulersProvider: SchedulersProvider

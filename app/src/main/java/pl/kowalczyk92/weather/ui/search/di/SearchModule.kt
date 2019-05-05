@@ -1,17 +1,15 @@
 package pl.kowalczyk92.weather.ui.search.di
 
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import dagger.Module
-import dagger.Binds
-import pl.kowalczyk92.weather.ui.search.SearchContract
-import pl.kowalczyk92.weather.ui.search.SearchInteractor
-import pl.kowalczyk92.weather.ui.search.SearchRouting
+import dagger.Provides
+import pl.kowalczyk92.weather.ui.main.MainActivity
 
 @Module
-abstract class SearchModule {
+class SearchModule {
 
-    @Binds
-    abstract fun bindSearchInteractor(searchInteractor: SearchInteractor): SearchContract.Interactor
-
-    @Binds
-    abstract fun bindSesrchRouting(searchRouting: SearchRouting): SearchContract.Routing
+    @Provides
+    fun providesLinearLayoutManager(activity: MainActivity) =
+        LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
 }

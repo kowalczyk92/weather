@@ -7,7 +7,7 @@ import io.reactivex.subjects.Subject
 import pl.kowalczyk92.weather.R
 import pl.kowalczyk92.weather.data.database.City
 
-class CityListAdapter(
+open class CityListAdapter(
     private val searchEvents: Subject<String>,
     private val deleteCityEvents: Subject<City>,
     private val layoutInflater: LayoutInflater
