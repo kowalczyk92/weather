@@ -5,4 +5,8 @@
     <string name="search_delete_city_button_text">Usuń</string>
 
     <string name="error_default">Ups, coś poszło nie tak.</string>
+
+    <string name="details_pressure">Ciśnienie:</string>
+    <string name="details_wind_speed">Prędkość wiatru:</string>
+    <string name="details_teperature">Temperatura:</string>
 </resources>

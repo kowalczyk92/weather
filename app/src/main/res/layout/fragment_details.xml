@@ -5,7 +5,22 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/details_text_view"
+        android:id="@+id/details_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/details_temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/details_pressure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/details_wind_speed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
