@@ -33,7 +33,7 @@ class DataExtensionsKtTest {
 
     private fun createMain() = Main(
         humidity = 10,
-        pressure = 11,
+        pressure = 11.0,
         temp = 30.5,
         temp_max = 31.0,
         temp_min = 29.0

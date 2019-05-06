@@ -11,6 +11,7 @@ interface WeatherService {
     @GET("data/2.5/weather")
     fun getWeatherForecast(
         @Query("q") cityName: String,
+        @Query("units") units: String = "metric",
         @Query("appid") appid: String = BuildConfig.APPID
     ): Single<WeatherForecast>
 }

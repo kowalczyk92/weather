@@ -1,5 +1,6 @@
 package pl.kowalczyk92.weather.ui.details
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.testing.FragmentScenario
@@ -14,7 +15,6 @@ import kotlinx.android.synthetic.main.fragment_details.details_wind_speed
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import pl.kowalczyk92.weather.R
 import pl.kowalczyk92.weather.data.entity.Clouds
 import pl.kowalczyk92.weather.data.entity.Coord
 import pl.kowalczyk92.weather.data.entity.Main
@@ -70,36 +70,36 @@ class DetailsFragmentTest {
 
     @Test
     fun showTemperature_sets_temperature() {
-        val temperature = 123
+        val temperature = 123.0
         scenario.onFragment {
-            it.showTemperature(temperature, R.color.colorPrimary)
-            assertEquals("Temperatura: 123", it.details_temperature.text)
+            it.showTemperature(temperature, Color.BLACK)
+            assertEquals("Temperatura: 123.0 C", it.details_temperature.text)
         }
     }
 
     @Test
     fun showTemperature_sets_temperature_text_color() {
         scenario.onFragment {
-            it.showTemperature(1, R.color.colorPrimary)
-            assertEquals(R.color.colorPrimary, it.details_temperature.currentTextColor)
+            it.showTemperature(1.0, Color.RED)
+            assertEquals(Color.RED, it.details_temperature.currentTextColor)
         }
     }
 
     @Test
     fun showPressure_sets_pressure() {
-        val pressure = 123
+        val pressure = 123.0
         scenario.onFragment {
             it.showPressure(pressure)
-            assertEquals("Ciśnienie: 123", it.details_pressure.text)
+            assertEquals("Ciśnienie: 123.0", it.details_pressure.text)
         }
     }
 
     @Test
     fun showWindSpeed_sets_wind_speed() {
-        val wind = 123
+        val wind = 123.0
         scenario.onFragment {
             it.showWindSpeed(wind)
-            assertEquals("Prędkość wiatru: 123", it.details_wind_speed.text)
+            assertEquals("Prędkość wiatru: 123.0", it.details_wind_speed.text)
         }
     }
 
@@ -129,7 +129,7 @@ class DetailsFragmentTest {
 
     private fun createMain() = Main(
         humidity = 10,
-        pressure = 11,
+        pressure = 11.0,
         temp = 30.5,
         temp_max = 31.0,
         temp_min = 29.0

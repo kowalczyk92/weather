@@ -8,8 +8,8 @@ interface DetailsContract {
     interface View : BaseView {
         val forecastEvent: Observable<WeatherForecast>
         fun showCityName(name: String)
-        fun showTemperature(degree: Int, color: Int)
-        fun showPressure(pressure: Int)
-        fun showWindSpeed(speed: Int)
+        fun showTemperature(degree: Double, color: Int)
+        fun showPressure(pressure: Double)
+        fun showWindSpeed(speed: Double)
     }
 }

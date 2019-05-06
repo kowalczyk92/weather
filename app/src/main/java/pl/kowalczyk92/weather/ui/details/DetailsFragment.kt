@@ -45,16 +45,16 @@ open class DetailsFragment : BaseFragment(), DetailsContract.View {
         details_name.text = name
     }
 
-    override fun showTemperature(degree: Int, color: Int) {
-        details_temperature.text = "${getString(R.string.details_teperature)} $degree"
+    override fun showTemperature(degree: Double, color: Int) {
+        details_temperature.text = "${getString(R.string.details_teperature)} $degree C"
         details_temperature.setTextColor(color)
     }
 
-    override fun showPressure(pressure: Int) {
+    override fun showPressure(pressure: Double) {
         details_pressure.text = "${getString(R.string.details_pressure)} $pressure"
     }
 
-    override fun showWindSpeed(speed: Int) {
+    override fun showWindSpeed(speed: Double) {
         details_wind_speed.text = "${getString(R.string.details_wind_speed)} $speed"
     }
 
