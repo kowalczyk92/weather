@@ -29,7 +29,9 @@ open class SearchFragment : BaseFragment(), SearchContract.View {
     override val layout = R.layout.fragment_search
     override val searchEvents: Observable<String>
         get() = Observable.merge(searchEventsSubject,
-            confirm_button.clicks().map { search_edit_text.text.toString() }
+            confirm_button.clicks()
+                .map { search_edit_text.text.toString() }
+                .filter { it.isNotEmpty() }
         )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

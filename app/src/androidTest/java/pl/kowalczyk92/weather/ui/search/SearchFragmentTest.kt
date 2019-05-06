@@ -113,4 +113,14 @@ class SearchFragmentTest {
             testObserver.assertValue(cityName)
         }
     }
+
+    @Test
+    fun confirmButton_click_does_not_emit_value_when_editText_is_empty() {
+        scenario.onFragment {
+            val testObserver = it.searchEvents.test()
+            it.confirm_button.performClick()
+            testObserver.assertNoErrors()
+            testObserver.assertNoValues()
+        }
+    }
 }
