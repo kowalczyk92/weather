@@ -4,7 +4,8 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.jakewharton.rxbinding3.view.clicks
 import io.reactivex.subjects.Subject
-import kotlinx.android.synthetic.main.row_city.view.*
+import kotlinx.android.synthetic.main.row_city.view.city_name
+import kotlinx.android.synthetic.main.row_city.view.delete_city_button
 import pl.kowalczyk92.weather.data.database.City
 
 class CityViewHolder(
